@@ -35,6 +35,14 @@ CREATE TABLE IF NOT EXISTS official_sources (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
+CREATE TABLE IF NOT EXISTS contact_messages (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name VARCHAR(120) NOT NULL,
+  email VARCHAR(254) NOT NULL,
+  message TEXT NOT NULL CHECK (char_length(message) <= 3000),
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
 -- Initial public categories and articles. These are safe to run repeatedly.
 INSERT INTO categories (name, slug, description) VALUES
   ('ताज़ा खबरें', 'latest-news', 'कर्मचारियों के हालिया अपडेट'),
