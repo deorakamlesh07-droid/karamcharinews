@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ArticleShare } from "@/components/article-share";
+import { ArticleMedia } from "@/components/article-media";
 import "./globals.css";
 import "./hindi.css";
 import "./news-theme.css";
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <Header />
         <main>{children}</main>
+        <ArticleMedia />
         <ArticleShare />
         <Footer />
         <Analytics />
