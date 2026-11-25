@@ -5,6 +5,7 @@ import { getLatestNews } from "@/lib/news";
 
 export default async function Home() {
   const [lead, ...rest] = await getLatestNews();
+  if (!lead) return <section className="container page-section"><p className="eyebrow">न्यूज़ डेस्क</p><h1 className="page-title">खबरें शीघ्र उपलब्ध होंगी</h1><p className="page-intro">अभी कोई प्रकाशित समाचार उपलब्ध नहीं है।</p></section>;
   return (
     <>
       <section className="breaking"><div className="container breaking-inner"><span className="pulse">ताज़ा</span><Link href={`/news/${lead.slug}`}>{lead.title}</Link><span className="arrow">→</span></div></section>
