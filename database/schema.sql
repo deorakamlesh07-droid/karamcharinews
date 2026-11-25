@@ -23,6 +23,18 @@ CREATE TABLE IF NOT EXISTS articles (
 );
 CREATE INDEX IF NOT EXISTS articles_published_idx ON articles(status, published_at DESC);
 
+-- One-time administrator email codes. Codes are HMAC-hashed before storage.
+CREATE TABLE IF NOT EXISTS admin_otp_challenges (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  email VARCHAR(254) NOT NULL,
+  code_hash VARCHAR(64) NOT NULL,
+  attempts SMALLINT NOT NULL DEFAULT 0 CHECK (attempts >= 0 AND attempts <= 5),
+  expires_at TIMESTAMPTZ NOT NULL,
+  used_at TIMESTAMPTZ,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS admin_otp_challenges_lookup_idx ON admin_otp_challenges(email, created_at DESC);
+
 -- Maintain a vetted list of government pages. An editor should verify each item before publishing.
 CREATE TABLE IF NOT EXISTS official_sources (
   id SERIAL PRIMARY KEY,
