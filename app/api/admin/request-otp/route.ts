@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { createOtp, hashOtp, normaliseAdminEmail } from "@/lib/admin-auth";
+import { createOtp, hashOtp, hasAdminGate, normaliseAdminEmail } from "@/lib/admin-auth";
 import { getSql } from "@/lib/db";
 
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
+  if (!(await hasAdminGate())) return new NextResponse(null, { status: 404 });
   try {
     const { email } = await request.json() as { email?: string };
     const adminEmail = normaliseAdminEmail(email ?? "");

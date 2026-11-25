@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
-import { createSession, normaliseAdminEmail, sameOtp, sessionCookieOptions } from "@/lib/admin-auth";
+import { createSession, hasAdminGate, normaliseAdminEmail, sameOtp, sessionCookieOptions } from "@/lib/admin-auth";
 import { getSql } from "@/lib/db";
 
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
+  if (!(await hasAdminGate())) return new NextResponse(null, { status: 404 });
   try {
     const { email, code } = await request.json() as { email?: string; code?: string };
     const adminEmail = normaliseAdminEmail(email ?? "");

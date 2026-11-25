@@ -1,11 +1,13 @@
 import { ArticleForm } from "./article-form";
 import "./admin.css";
-import { requireAdmin } from "@/lib/admin-auth";
+import { hasAdminGate, requireAdmin } from "@/lib/admin-auth";
+import { notFound } from "next/navigation";
 import { getSql } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {
+  if (!(await hasAdminGate())) notFound();
   await requireAdmin();
   const sql = getSql();
   if (!sql) return <main className="admin-shell"><section className="admin-card"><h1>Database setup required</h1><p>Add DATABASE_URL in Vercel, then run database/schema.sql against your Neon database.</p></section></main>;

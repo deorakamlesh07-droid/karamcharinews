@@ -4,9 +4,10 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export const ADMIN_COOKIE = "kn_admin_session";
+export const ADMIN_GATE_COOKIE = "kn_admin_gate";
 const SESSION_MAX_AGE = 60 * 60 * 8;
 
-function required(name: "ADMIN_EMAIL" | "ADMIN_SESSION_SECRET" | "ADMIN_OTP_SECRET") {
+function required(name: "ADMIN_EMAIL" | "ADMIN_SESSION_SECRET" | "ADMIN_OTP_SECRET" | "ADMIN_ACCESS_KEY") {
   const value = process.env[name];
   if (!value) throw new Error(`${name} is not configured`);
   return value;
@@ -40,6 +41,30 @@ export function createSession(email: string) {
   return `${payload}.${signature(payload)}`;
 }
 
+export function validAccessKey(key?: string) {
+  if (!key) return false;
+  const expected = Buffer.from(required("ADMIN_ACCESS_KEY"));
+  const provided = Buffer.from(key);
+  return expected.length === provided.length && timingSafeEqual(expected, provided);
+}
+
+export function createGateSession() {
+  const payload = Buffer.from(JSON.stringify({ gate: true, exp: Date.now() + SESSION_MAX_AGE * 1000 })).toString("base64url");
+  return `${payload}.${signature(payload)}`;
+}
+
+export function validGateSession(token?: string) {
+  if (!token) return false;
+  const [payload, receivedSignature] = token.split(".");
+  if (!payload || !receivedSignature) return false;
+  const expectedSignature = signature(payload);
+  if (receivedSignature.length !== expectedSignature.length || !timingSafeEqual(Buffer.from(receivedSignature), Buffer.from(expectedSignature))) return false;
+  try {
+    const gate = JSON.parse(Buffer.from(payload, "base64url").toString()) as { gate?: boolean; exp?: number };
+    return gate.gate === true && typeof gate.exp === "number" && gate.exp > Date.now();
+  } catch { return false; }
+}
+
 export function validSession(token?: string) {
   if (!token) return false;
   const [payload, receivedSignature] = token.split(".");
@@ -54,6 +79,10 @@ export function validSession(token?: string) {
 
 export async function isAdmin() {
   return validSession((await cookies()).get(ADMIN_COOKIE)?.value);
+}
+
+export async function hasAdminGate() {
+  return validGateSession((await cookies()).get(ADMIN_GATE_COOKIE)?.value);
 }
 
 export async function requireAdmin() {
