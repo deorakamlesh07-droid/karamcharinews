@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   title: { default: "Karamchari News | राजस्थान कर्मचारी समाचार", template: "%s | Karamchari News" },
   description: "राजस्थान कर्मचारियों के लिए DA, DPC, ACP/MACP, वेतन आयोग, GPF और पेंशन की स्रोत-आधारित जानकारी।",
   alternates: { canonical: "/" },
+  icons: { icon: "/icon.png", apple: "/icon.png" },
   openGraph: { type: "website", locale: "hi_IN", url: siteUrl, siteName, title: "Karamchari News | राजस्थान कर्मचारी समाचार", description: "राजस्थान कर्मचारियों के लिए स्रोत-आधारित समाचार और उपयोगी गाइड।" },
 };
 
