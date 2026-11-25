@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ArticleShare } from "@/components/article-share";
@@ -38,6 +39,9 @@ export const metadata: Metadata = {
     description: "DA, DPC, 8वां वेतन आयोग और पेंशन — स्रोत-आधारित अपडेट।",
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+  other: {
+    "google-adsense-account": "ca-pub-2060188522674524",
+  },
 };
 
 const websiteSchema = {
@@ -78,6 +82,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Footer />
         <Analytics />
         <SpeedInsights />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2060188522674524"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
