@@ -21,7 +21,17 @@ export const metadata: Metadata = {
   keywords:
     "राजस्थान कर्मचारी समाचार, DA update rajasthan, 8th pay commission, 8th CPC, DPC rajasthan, MACP rajasthan, pay commission rajasthan, fitment factor, dearness allowance rajasthan, sarkari karmchari news, karamchari news",
   alternates: { canonical: "/" },
-  icons: { icon: "/icon.png", apple: "/icon.png" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   openGraph: {
     type: "website",
     locale: "hi_IN",
