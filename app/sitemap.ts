@@ -1,3 +1,4 @@
+
 import type { MetadataRoute } from "next";
 import { categories } from "@/lib/news";
 import { getSql } from "@/lib/db";
