@@ -19,7 +19,8 @@ CREATE TABLE IF NOT EXISTS articles (
   issued_on DATE,
   published_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  status VARCHAR(20) NOT NULL DEFAULT 'draft' CHECK (status IN ('draft','published','archived'))
+  status VARCHAR(20) NOT NULL DEFAULT 'draft' CHECK (status IN ('draft','published','archived')),
+  image_theme VARCHAR(50) DEFAULT '8thcpc'
 );
 CREATE INDEX IF NOT EXISTS articles_published_idx ON articles(status, published_at DESC);
 

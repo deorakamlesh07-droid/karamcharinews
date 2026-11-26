@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="moneyBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a2a1b"/>
+      <stop offset="50%" stop-color="#144f33"/>
+      <stop offset="100%" stop-color="#071e13"/>
+    </linearGradient>
+    <linearGradient id="goldCoin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe270"/>
+      <stop offset="40%" stop-color="#f5b82e"/>
+      <stop offset="100%" stop-color="#d68f18"/>
+    </linearGradient>
+    <linearGradient id="coinRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff0aa"/>
+      <stop offset="100%" stop-color="#b8740c"/>
+    </linearGradient>
+    <linearGradient id="innerPlate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b5a3b"/>
+      <stop offset="100%" stop-color="#0e3723"/>
+    </linearGradient>
+    <filter id="moneyShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="500" fill="url(#moneyBg)"/>
+
+  <!-- Subtle Pattern -->
+  <g opacity="0.08" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="100" x2="600" y2="100"/>
+    <line x1="0" y1="200" x2="600" y2="200"/>
+    <line x1="0" y1="300" x2="600" y2="300"/>
+    <line x1="0" y1="400" x2="600" y2="400"/>
+    <line x1="150" y1="0" x2="150" y2="500"/>
+    <line x1="300" y1="0" x2="300" y2="500"/>
+    <line x1="450" y1="0" x2="450" y2="500"/>
+  </g>
+
+  <!-- Decorative Orbit -->
+  <circle cx="300" cy="215" r="165" fill="none" stroke="url(#goldCoin)" stroke-width="1.5" stroke-dasharray="5 7" opacity="0.4"/>
+
+  <!-- Main Central Rupee Medallion -->
+  <g filter="url(#moneyShadow)">
+    <!-- Base Outer Glow Coin -->
+    <circle cx="300" cy="215" r="130" fill="url(#innerPlate)" stroke="url(#coinRing)" stroke-width="5"/>
+    <circle cx="300" cy="215" r="115" fill="none" stroke="#257a51" stroke-width="2" opacity="0.8"/>
+    
+    <!-- Percentage badges around -->
+    <g transform="translate(195, 145)">
+      <circle cx="15" cy="15" r="18" fill="#1b5639" stroke="#f5b82e" stroke-width="2"/>
+      <text x="15" y="21" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="16" fill="#ffe270" text-anchor="middle">%</text>
+    </g>
+    <g transform="translate(370, 145)">
+      <circle cx="15" cy="15" r="18" fill="#1b5639" stroke="#f5b82e" stroke-width="2"/>
+      <text x="15" y="21" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="16" fill="#ffe270" text-anchor="middle">%</text>
+    </g>
+
+    <!-- Center Rupee Symbol -->
+    <text x="300" y="255" font-family="'Segoe UI', 'Noto Sans Devanagari', sans-serif" font-weight="900" font-size="115" fill="url(#goldCoin)" text-anchor="middle">₹</text>
+  </g>
+
+  <!-- Subtitle Tag -->
+  <text x="300" y="365" font-family="'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="19" fill="#9de8bf" text-anchor="middle" letter-spacing="3">SALARY, DA &amp; BENEFITS</text>
+
+  <!-- Bottom Banner Pill -->
+  <g filter="url(#moneyShadow)">
+    <rect x="130" y="390" width="340" height="52" rx="26" fill="#082215" stroke="url(#goldCoin)" stroke-width="2"/>
+    <text x="300" y="423" font-family="'Segoe UI', Roboto, 'Noto Sans Devanagari', sans-serif" font-weight="700" font-size="20" fill="#ffffff" text-anchor="middle">वेतन एवं DA / महंगाई भत्ता</text>
+  </g>
+</svg>

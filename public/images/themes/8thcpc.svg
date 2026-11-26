@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cpcBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c233c"/>
+      <stop offset="50%" stop-color="#163e63"/>
+      <stop offset="100%" stop-color="#091b2e"/>
+    </linearGradient>
+    <linearGradient id="goldGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd56b"/>
+      <stop offset="100%" stop-color="#e5a93b"/>
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f588c"/>
+      <stop offset="100%" stop-color="#0d2e4d"/>
+    </linearGradient>
+    <filter id="cpcShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="500" fill="url(#cpcBg)"/>
+  
+  <!-- Subtle Grid/Pattern -->
+  <g opacity="0.08" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="100" x2="600" y2="100"/>
+    <line x1="0" y1="200" x2="600" y2="200"/>
+    <line x1="0" y1="300" x2="600" y2="300"/>
+    <line x1="0" y1="400" x2="600" y2="400"/>
+    <line x1="150" y1="0" x2="150" y2="500"/>
+    <line x1="300" y1="0" x2="300" y2="500"/>
+    <line x1="450" y1="0" x2="450" y2="500"/>
+  </g>
+
+  <!-- Decorative Rings -->
+  <circle cx="300" cy="220" r="170" fill="none" stroke="#256499" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.4"/>
+  <circle cx="300" cy="220" r="190" fill="none" stroke="url(#goldGlow)" stroke-width="1" opacity="0.2"/>
+
+  <!-- Main Central Shield / Emblem -->
+  <g filter="url(#cpcShadow)">
+    <circle cx="300" cy="220" r="130" fill="url(#shieldGrad)" stroke="url(#goldGlow)" stroke-width="4"/>
+    <circle cx="300" cy="220" r="116" fill="none" stroke="#367cb5" stroke-width="1.5" opacity="0.7"/>
+    
+    <!-- Stars around badge -->
+    <path d="M300 106 L302 112 L308 112 L303 115 L305 121 L300 117 L295 121 L297 115 L292 112 L298 112 Z" fill="#ffd56b"/>
+    <path d="M210 220 L212 226 L218 226 L213 229 L215 235 L210 231 L205 235 L207 229 L202 226 L208 226 Z" fill="#ffd56b"/>
+    <path d="M390 220 L392 226 L398 226 L393 229 L395 235 L390 231 L385 235 L387 229 L382 226 L388 226 Z" fill="#ffd56b"/>
+
+    <!-- Central "8th" Typography -->
+    <text x="300" y="210" font-family="'Arial Black', Impact, sans-serif" font-weight="900" font-size="68" fill="url(#goldGlow)" text-anchor="middle" letter-spacing="-1">8th</text>
+    <text x="300" y="260" font-family="'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="28" fill="#ffffff" text-anchor="middle" letter-spacing="3">CPC</text>
+    <text x="300" y="295" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="15" fill="#a4cbef" text-anchor="middle" letter-spacing="2">PAY COMMISSION</text>
+  </g>
+
+  <!-- Bottom Banner Pill -->
+  <g filter="url(#cpcShadow)">
+    <rect x="130" y="388" width="340" height="52" rx="26" fill="#0d243b" stroke="url(#goldGlow)" stroke-width="2"/>
+    <text x="300" y="421" font-family="'Segoe UI', Roboto, 'Noto Sans Devanagari', sans-serif" font-weight="700" font-size="20" fill="#ffffff" text-anchor="middle">8वां वेतन आयोग अपडेट</text>
+  </g>
+</svg>
